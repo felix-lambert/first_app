@@ -1,0 +1,29 @@
+{
+  "name": "digo",
+  "version": "0.0.1",
+  "description": "Le créateur d'événément digo",
+  "main": "Node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jane-doe/node-example.git"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "jane-doe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jane-doe/node-example/issues"
+  },
+  "dependencies": {
+    "express": "^4.1.2",
+    "logfmt": "^1.1.2"
+  }
+}
