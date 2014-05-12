@@ -1,0 +1,57 @@
+<% include ../layouts/header.ejs %>
+    <div class="container">
+		<div class="row row-offcanvas row-offcanvas-right">
+			<div class="row">
+				<h1>Contactez-nous</h1>
+
+				<hr>    
+			<div class="col-sm-8">
+			<form role="form">
+				<div class="row form-group">
+					<div class="col-xs-5">
+						<input class="form-control" id="firstName" name="firstName" placeholder="First Name" required="" type="text">
+					</div>            
+					<div class="col-xs-5">
+						<input class="form-control" id="lastName" name="lastName" placeholder="Last Name" required="" type="text">            
+					</div>        
+				</div>        
+				<div class="row form-group">            
+					<div class="col-xs-5">                
+						<input class="form-control" name="email" placeholder="Email" required="" type="email">
+					</div>
+					<div class="col-xs-5">                
+						<input class="form-control" name="phone" placeholder="Phone" required="" type="email">
+					</div>        
+				</div>        
+				<div class="row form-group">            
+					<div class="col-xs-10">                
+						<textarea class="form-control" rows="5">Rédigez votre message</textarea>
+					</div>        
+				</div>
+				        
+				<div class="row form-group">            
+					<div class="col-xs-10">                
+						<button class="btn btn-primary pull-right">Envoyer</button>
+					</div>        
+				</div>
+			</form>
+			</div>    
+			<div class="col-sm-3 pull-right"> 
+				<address>          
+					<strong>La Coopérative Indigo</strong><br>          
+					<span id="adresse-customized">
+						26 rue richer<br>          
+						Paris, 75003<br>          
+					</span>
+				</address> 
+				<address>          
+					<strong>Contact par email</strong><br>
+					<a href="mailto:#">contact@onasus.com</a>
+				</address>     
+			</div>
+		</div><!--/row-->
+			</div>
+  		</div>
+	</div>
+
+<% include ../layouts/footer.ejs %>

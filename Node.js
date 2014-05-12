@@ -1,15 +1,20 @@
-// web.js
-var express = require("express");
-var logfmt = require("logfmt");
+/**
+ * Module dependencies.
+ */
+	http = require('http'), 
+	express = require('express'),
+	path = require('path');
+
+//create express app
 var app = express();
 
-app.use(logfmt.requestLogger());
-
-app.get('/', function(req, res) {
-  res.send('Hello World!');
+//config express in all environments
+app.configure(function(){
+  	app.set('views', __dirname + '/views');
+  	app.set('view engine', 'ejs');
+    app.use(express.static(path.join(__dirname, 'public')));
 });
 
-var port = Number(process.env.PORT || 5000);
-app.listen(port, function() {
-  console.log("Listening on " + port);
-});
+var routes = require('./routes/routes')(app);
+
+app.listen(8080);
