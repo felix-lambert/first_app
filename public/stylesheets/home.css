@@ -1,0 +1,146 @@
+/* --------------------- HOMEPAGE -----------------------*/
+
+#wideContainer {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	min-width: 1000px;
+	height: 532px;
+	position: relative;
+	background-image: url('../images/slide.png');
+	background-position: center;
+	margin-top: -7px;
+	z-index: 10;
+}
+
+#search-content {
+	width: 1000px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#map-search {
+	float: left;
+	width: 512px;
+	height: 460px;
+	background-image: url('../images/background-searcher.png');
+	background-repeat: repeat-x;
+	margin-top: 68px;
+}
+
+#fast-search {
+	float: right;
+	width: 450px;
+	height: 460px;
+	background-image: url('../images/background-searcher.png');
+	background-repeat: repeat-x;
+	margin-top: 68px;
+}
+
+#fast-search #area-form {
+	width: 100%;
+	height: 360px;
+	text-align: center;
+	margin-top: 60px;
+}
+
+#fast-search #area-form select {
+	width: 300px;
+	padding: 10px;
+}
+
+#slider-home {
+	height: 105px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#description-home {
+	height: 510px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #f2f2f2;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+#description-home-content {
+	height: 510px;
+	width: 1000px;
+	min-width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#iphone-white {
+	width: 210px;
+	height: 411px;
+	margin-top: 50px;
+	background-image: url('../images/iphone_white.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	float: left;
+}
+
+#text-iphone {
+	float: right;
+	width: 750px;
+	color: #626262;
+	margin-top: 20px;
+}
+
+#area-bouton-google-apple {
+	margin-top: 43px;
+}
+
+#bouton-google {
+	width: 301px;
+	height: 98px;
+	float: left;
+}
+
+#bouton-apple {
+	width: 301px;
+	height: 98px;
+	float: right;
+	margin-right: 120px;
+}
+
+#description-home2 {
+	height: 400px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #f2f2f2;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+#description-home-content2 {
+	height: 400px;
+	width: 1000px;
+	min-width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#imac {
+	float: right;
+	width: 330px;
+	height: 388px;
+	background-image: url('../images/imac.png');
+	margin-top: 15px;
+}
+
+#text-imac {
+	width: 600px;
+	float: left;
+	margin-top: 47px;
+	color: #626262;
+}
+
+/* -------------------------------------------------------*/

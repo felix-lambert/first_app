@@ -1,0 +1,175 @@
+<% include ../layouts/header.ejs %>
+
+<link rel="stylesheet" href="/stylesheets/style.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"/></script>
+<script src="http://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"/></script>
+
+<script src="/javascripts/userManager-client.js"/></script>
+
+<script type="text/javascript" src="/javascripts/bootstrap-select.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap-select.min.js">
+</script>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/javascripts/jquery.geocomplete.js"></script>
+<script type="text/javascript" src="/javascripts/uploader/dropzone.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+
+    <!-- 2.3.2
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.js"></script>
+    -->
+<script type="text/javascript">
+    $(window).on('load', function () {
+
+        $('.selectpicker').selectpicker({
+            'selectedText': 'cat'
+        });
+
+        // $('.selectpicker').selectpicker('hide');
+    });
+</script>
+
+<div class="container">
+	<div class="page-header text-center">
+		<h1><span class="fa fa-user"></span> <%= user.local.name %></h1>
+	</div>
+	<div class="row">
+		<!-- LOCAL INFORMATION -->
+		<div class="col-sm-6">
+			<div>
+					<h3><%= user.local.city %></h3>
+					<h3><strong><%= user.local.age %></strong></h3>
+					<h4><%= user.local.job %></h4>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="col-md-offset-7">
+				<p><img src="/img/fullsize/<%= user.local.image.contentType %>" class="img-responsive img-circle" width:"200px;" height: "200px;" alt="Responsive image"></p>
+				<i class="fa fa-star-o fa-3x"></i><i class="fa fa-star-o fa-3x"></i><i class="fa fa-star-o fa-3x"></i><i class="fa fa-star-o fa-3x"></i><i class="fa fa-star-o fa-3x"></i>
+			</div>
+		</div>
+		</div>
+    <div class="row">
+		<div class="col-sm-12">
+  <h2>Décrivez-vous</h2>
+  <h3><%= user.local.description %></h3>
+<table ng-app="userManagerApp">
+  <tbody ng-controller="userManagerController">
+    <tr ng-repeat="user in users" ng-class-even="'even'" ng-class-odd="'odd'">
+      <td>
+        <textarea ng-model="user.description" rows="4" cols="50"></textarea>
+      </td>
+      <td>
+        <button ng-click="updateUser(user)" class="btn btn-primary"> Update</button>
+        <button ng-click="deleteUser(user._id)" class="btn btn-primary"> Delete</button>
+      </td>
+  </tr>
+  <tr class="odd">
+    <form role="form" method="post" enctype="multipart/form-data" action="/profile/messages/">
+      <td> 
+         <textarea name="description" rows="4" cols="50"></textarea>
+      </td>
+      <td>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </td>
+    </form>
+  </tr>
+</table>
+    
+    <div class="col-xs-6 jumbotron">
+            <h2>Publiez votre objet</h2>
+            <!-- show any messages that come back with authentication -->
+
+            <!-- LOGIN FORM -->
+            <form action="/home/objects" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label>Nom de l'objet</label>
+                <input placeholder="Nom de l'objet" type="text" class="form-control" name="name">
+              </div>
+              
+              <div class="form-group">
+                <label>Type</label>
+                  <select name="type" class="form-control selectpicker type">
+                      <option data-icon="fa fa-picture-o">Art, Design</option>
+                      <option data-icon="fa fa-child">Loisir</option>
+                      <option data-icon="fa fa-graduation-cap">Education</option>
+                      <option data-icon="fa fa-cutlery">Cuisine</option>
+                      <option data-icon="fa fa-wrench">Bricolage</option>
+                      <option data-icon="fa fa-female">Mode, Stylisme</option>
+                      <option data-icon="fa fa-desktop">Informatique, Numérique</option>
+                      <option data-icon="fa fa-medkit">Santé, Bien-Être</option>
+                      <option data-icon="fa fa-car">Moto-Auto</option>
+                      <option data-icon="fa fa-truck">Livraison, Transport</option>
+                  </select>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <textarea type="text" placeholder="Description de l'objet" class="form-control" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Prix</label>
+                <input placeholder="En euro" type="text" class="form-control" name="prix"/>
+              </div>
+              <div class="form-group" id="form-location">
+                <label for="inputLocation">Lieu</label>
+                <input id="location" type="text" name="adresse" class="form-control" />  
+        
+                <!--<li>Location: <span data-geo="location"></span></li>
+                <li>Country Code: <span data-geo="country_short"></span></li>
+                <li>Exemple: <span data-geo="locality"></span></li>-->
+            
+                <input type="hidden" name="locationLatAd" data-geo="lat">
+                <input type="hidden" name="locationLngAd" data-geo="lng">
+                <input type="hidden" name="locationCityAd" data-geo="locality">
+              </div>
+              <script type="text/javascript">
+                $("#location").geocomplete({
+                  details: "#form-location",
+                  detailsAttribute: "data-geo"
+                });
+              </script>
+
+              <div class="form-group">
+                <label>Date de mise en ligne</label>
+                <input type="text" class="form-control" name="dateDebut"/>
+              </div>
+              <div class="form-group">
+                <label>Nombre de jour de disponibilité de l'objet</label>
+               <input type="text" placeholder="Nombre de jour de disponibilité" class="form-control" name="dateFin"/>
+              </div>
+              <div class="form-group">
+                <label>Longitude</label>
+               <input type="text" class="form-control" name="longitude"/>
+              </div>
+              <div class="form-group">
+                <label>Latitude</label>
+               <input type="text" class="form-control" name="latitude"/>
+              </div>
+              <div class="form-group">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                  </div>
+                  <div>
+                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="image"></span>
+                    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-warning btn-lg">Enregistrer</button>
+            </form>
+            <!-- The file upload form used as target for the file upload widget -->
+        </div>
+	    </div>
+    </div>
+  </div>
+<br/><br/><br/><br/>
+
+<% include ../layouts/footer.ejs %>
